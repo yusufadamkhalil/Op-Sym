@@ -1,12 +1,21 @@
-# Op-Sym PWA Wrapper
+# Op-Sym PWA - Phone Capture v1.0A
 
-This package is a free static Progressive Web App wrapper for the existing Op-Sym Apps Script web app.
+This folder replaces the existing GitHub Pages PWA wrapper.
 
-Apps Script production URL:
+Production Apps Script URL:
 https://script.google.com/macros/s/AKfycbygTbX2omi_63Ricm2bDmbBzcwNuBXtKxJI2NpHIqvLCf051BiU06BTPkM-ufdbyQAXbA/exec
 
-Files:
+New capabilities:
+- Android Web Share Target for text and links.
+- Home-screen shortcut: Quick Capture.
+- Home-screen shortcut: New Task.
+- Home-screen shortcut: Inbox.
+- Service worker and manifest included.
+- No paid API is required.
+
+Files to upload to the ROOT of the existing GitHub Pages repository:
 - index.html
+- share.html
 - manifest.webmanifest
 - service-worker.js
 - icon-192.png
@@ -15,13 +24,4 @@ Files:
 - favicon-96.png
 - .nojekyll
 
-Purpose:
-- Provide the Op-Sym name and Orbit + Check icon automatically to supported phones.
-- Make Android/Chromium browsers offer a real install prompt when eligible.
-- Make iPhone/iPad Safari use the Op-Sym name/icon when the user chooses Add to Home Screen.
-- Keep the actual Op-Sym system on Apps Script.
-
-Important:
-Mobile operating systems do not allow websites to silently install themselves. The user must confirm installation/add-to-home-screen once.
-
-GitHub Pages works over HTTPS, which is required for PWA service workers.
+After replacing the files, reinstall/update the PWA if Android does not immediately expose Op-Sym in the system Share sheet.

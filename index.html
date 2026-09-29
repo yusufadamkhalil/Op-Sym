@@ -4,127 +4,99 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <title>Op-Sym</title>
-
   <meta name="application-name" content="Op-Sym">
   <meta name="apple-mobile-web-app-title" content="Op-Sym">
   <meta name="theme-color" content="#0F52FF">
-  <meta name="description" content="Op-Sym — Plan · Focus · Get things done">
-
+  <meta name="description" content="Op-Sym - Plan · Focus · Get things done">
   <link rel="manifest" href="./manifest.webmanifest">
   <link rel="icon" type="image/png" sizes="96x96" href="./favicon-96.png">
   <link rel="apple-touch-icon" href="./apple-touch-icon.png">
-
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
-
   <style>
-    :root {
-      --blue:#0F52FF; --sky:#0EA5FF; --teal:#14D8C4; --cream:#FFE3B0;
-      --navy:#0B1A3C; --slate:#64748B; --pale:#EAF2FF;
-    }
+    :root{--blue:#0F52FF;--sky:#0EA5FF;--teal:#14D8C4;--cream:#FFE3B0;--navy:#0B1A3C;--slate:#64748B;--pale:#EAF2FF}
     *{box-sizing:border-box}
-    html,body{margin:0;min-height:100%;font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:
-      radial-gradient(circle at 18% 12%,rgba(14,165,255,.12),transparent 34%),
-      radial-gradient(circle at 85% 75%,rgba(20,216,196,.12),transparent 33%),
-      #fff;color:var(--navy)}
-    body{min-height:100vh;display:grid;place-items:center;padding:24px}
+    html,body{margin:0;min-height:100%;font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;background:#fff;color:var(--navy)}
+    body{min-height:100vh;display:grid;place-items:center;padding:24px;background:
+      radial-gradient(circle at 16% 10%,rgba(14,165,255,.14),transparent 34%),
+      radial-gradient(circle at 88% 80%,rgba(20,216,196,.10),transparent 32%),#fff}
     .shell{width:min(520px,100%);text-align:center}
-    .logo{width:132px;height:132px;object-fit:contain;border-radius:28px;box-shadow:0 20px 60px rgba(15,82,255,.12)}
-    h1{font-size:42px;letter-spacing:-.04em;margin:18px 0 4px}
-    .tag{color:var(--slate);letter-spacing:.12em;font-size:13px;margin-bottom:28px}
-    .card{background:rgba(255,255,255,.88);border:1px solid rgba(15,82,255,.10);border-radius:28px;padding:24px;
-      box-shadow:0 24px 70px rgba(11,26,60,.10);backdrop-filter:blur(18px)}
-    .status{font-size:14px;color:var(--slate);line-height:1.5;margin-bottom:18px}
+    .logo{width:124px;height:124px;object-fit:contain}
+    h1{font-size:40px;letter-spacing:-.04em;margin:14px 0 4px}
+    .tag{font-size:14px;color:var(--slate);margin-bottom:24px}
+    .card{padding:22px;border:1px solid #dce7f5;border-radius:26px;background:rgba(255,255,255,.93);
+      box-shadow:0 22px 60px rgba(11,26,60,.10)}
+    .status{font-size:15px;line-height:1.5;color:var(--slate);margin-bottom:16px}
     .actions{display:grid;gap:10px}
-    button,a.btn{appearance:none;border:0;text-decoration:none;border-radius:15px;padding:14px 18px;font-weight:800;font-size:15px;cursor:pointer}
-    .primary{background:linear-gradient(135deg,var(--teal),var(--blue));color:white;box-shadow:0 12px 26px rgba(15,82,255,.20)}
+    button,a.btn{border:0;text-decoration:none;border-radius:15px;padding:14px 18px;font-weight:850;font-size:15px;cursor:pointer}
+    .primary{background:linear-gradient(135deg,var(--teal),var(--blue));color:#fff}
     .secondary{background:#fff;color:var(--navy);border:1px solid #dce7f5}
-    .hint{margin-top:16px;font-size:12px;color:var(--slate);line-height:1.5}
-    #iosHelp{display:none;margin-top:14px;padding:14px;border-radius:14px;background:var(--pale);font-size:13px;line-height:1.5;text-align:left}
-    .brandline{margin-top:18px;font-size:11px;color:#8ca0bb}
+    .hint{margin-top:14px;font-size:12px;color:var(--slate);line-height:1.5}
+    #iosHelp{display:none;margin-top:12px;padding:13px;border-radius:14px;background:var(--pale);font-size:13px;line-height:1.5;text-align:left}
   </style>
 </head>
 <body>
   <main class="shell">
     <img class="logo" src="./icon-512.png" alt="Op-Sym Orbit and Check logo">
     <h1>Op-Sym</h1>
-    <div class="tag">PLAN · FOCUS · GET THINGS DONE</div>
-
+    <div class="tag">Plan · Focus · Get things done</div>
     <section class="card">
-      <div class="status" id="statusText">
-        Install Op-Sym on this device for a branded home-screen icon and quick access.
-      </div>
-
+      <div id="statusText" class="status">Install Op-Sym for Quick Capture and Android Share-to-Op-Sym.</div>
       <div class="actions">
         <button id="installBtn" class="primary" hidden>Install Op-Sym</button>
-        <a id="openBtn" class="btn primary" href="https://script.google.com/macros/s/AKfycbygTbX2omi_63Ricm2bDmbBzcwNuBXtKxJI2NpHIqvLCf051BiU06BTPkM-ufdbyQAXbA/exec">Open Op-Sym</a>
+        <a class="btn primary" href="https://script.google.com/macros/s/AKfycbygTbX2omi_63Ricm2bDmbBzcwNuBXtKxJI2NpHIqvLCf051BiU06BTPkM-ufdbyQAXbA/exec?ui=mobile">Open Op-Sym</a>
         <button id="iosBtn" class="secondary" hidden>How to add on iPhone/iPad</button>
       </div>
-
-      <div id="iosHelp">
-        In Safari, tap <strong>Share</strong> → <strong>Add to Home Screen</strong> → <strong>Add</strong>.
-        The icon and name will be supplied automatically by this Op-Sym wrapper.
-      </div>
-
-      <div class="hint">
-        Op-Sym remains powered by your existing Google Apps Script system. This page only provides the installable branding layer.
-      </div>
+      <div id="iosHelp">In Safari, tap <strong>Share</strong> → <strong>Add to Home Screen</strong> → <strong>Add</strong>.</div>
+      <div class="hint">On supported Android/Chromium devices, installed Op-Sym can appear in the system Share sheet for text and links.</div>
     </section>
-
-    <div class="brandline">Orbit + Check · Op-Sym</div>
   </main>
+<script>
+const APP_URL="https://script.google.com/macros/s/AKfycbygTbX2omi_63Ricm2bDmbBzcwNuBXtKxJI2NpHIqvLCf051BiU06BTPkM-ufdbyQAXbA/exec";
+let deferredPrompt=null;
 
-  <script>
-    const APP_URL = "https://script.google.com/macros/s/AKfycbygTbX2omi_63Ricm2bDmbBzcwNuBXtKxJI2NpHIqvLCf051BiU06BTPkM-ufdbyQAXbA/exec";
-    let deferredPrompt = null;
+if('serviceWorker' in navigator){
+  window.addEventListener('load',()=>navigator.serviceWorker.register('./service-worker.js').catch(()=>{}));
+}
 
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('./service-worker.js').catch(()=>{});
-      });
-    }
+const params=new URLSearchParams(location.search);
+const shortcut=params.get('shortcut');
+const isStandalone=window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone===true || params.get('source')==='pwa';
+const isiOS=/iphone|ipad|ipod/i.test(navigator.userAgent);
 
-    const isStandalone =
-      window.matchMedia('(display-mode: standalone)').matches ||
-      window.navigator.standalone === true ||
-      new URLSearchParams(location.search).get('source') === 'pwa';
+window.addEventListener('beforeinstallprompt',e=>{
+  e.preventDefault();deferredPrompt=e;
+  document.getElementById('installBtn').hidden=false;
+  document.getElementById('statusText').textContent='Op-Sym is ready to install on this device.';
+});
 
-    const isiOS = /iphone|ipad|ipod/i.test(navigator.userAgent);
-    const installBtn = document.getElementById('installBtn');
-    const iosBtn = document.getElementById('iosBtn');
-    const iosHelp = document.getElementById('iosHelp');
-    const statusText = document.getElementById('statusText');
+document.getElementById('installBtn').addEventListener('click',async()=>{
+  if(!deferredPrompt)return;
+  deferredPrompt.prompt();
+  await deferredPrompt.userChoice;
+  deferredPrompt=null;
+  document.getElementById('installBtn').hidden=true;
+});
 
-    window.addEventListener('beforeinstallprompt', e => {
-      e.preventDefault();
-      deferredPrompt = e;
-      installBtn.hidden = false;
-      statusText.textContent = 'Op-Sym is ready to install on this device.';
-    });
+if(isiOS && !window.navigator.standalone){
+  const b=document.getElementById('iosBtn'),h=document.getElementById('iosHelp');
+  b.hidden=false;b.addEventListener('click',()=>h.style.display=h.style.display==='block'?'none':'block');
+}
 
-    installBtn.addEventListener('click', async () => {
-      if (!deferredPrompt) return;
-      deferredPrompt.prompt();
-      const choice = await deferredPrompt.userChoice;
-      deferredPrompt = null;
-      installBtn.hidden = true;
-      statusText.textContent = choice.outcome === 'accepted'
-        ? 'Op-Sym has been added to your device.'
-        : 'Installation was not completed.';
-    });
-
-    if (isiOS && !window.navigator.standalone) {
-      iosBtn.hidden = false;
-      iosBtn.addEventListener('click', () => {
-        iosHelp.style.display = iosHelp.style.display === 'block' ? 'none' : 'block';
-      });
-    }
-
-    // When launched from an installed shortcut, hand off to the live Apps Script app.
-    if (isStandalone) {
-      statusText.textContent = 'Opening Op-Sym…';
-      setTimeout(() => window.location.replace(APP_URL), 700);
-    }
-  </script>
+if(isStandalone){
+  const u=new URL(APP_URL);
+  u.searchParams.set('ui','mobile');
+  if(shortcut==='capture'){
+    u.searchParams.set('opsymCapture','quick');
+    u.searchParams.set('opsymSource','PWA Shortcut');
+  } else if(shortcut==='task'){
+    u.searchParams.set('opsymLauncher','task');
+  } else if(shortcut==='inbox'){
+    u.searchParams.set('opsymView','inbox');
+  }
+  document.getElementById('statusText').textContent='Opening Op-Sym…';
+  setTimeout(()=>location.replace(u.toString()),350);
+}
+</script>
 </body>
 </html>

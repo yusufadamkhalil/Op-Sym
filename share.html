@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#0F52FF">
+  <title>Share to Op-Sym</title>
+  <style>
+    *{box-sizing:border-box}
+    body{margin:0;min-height:100vh;display:grid;place-items:center;padding:24px;font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;background:#F5F9FF;color:#0B1A3C}
+    .card{width:min(480px,100%);padding:26px;border-radius:26px;background:#fff;border:1px solid #D9E5F3;box-shadow:0 22px 60px rgba(11,26,60,.12);text-align:center}
+    img{width:84px;height:84px}
+    h1{font-size:26px;margin:8px 0}
+    p{font-size:15px;line-height:1.45;color:#64748B}
+    .spin{width:26px;height:26px;border:3px solid #D8E6FF;border-top-color:#0F52FF;border-radius:50%;margin:18px auto;animation:s .8s linear infinite}
+    @keyframes s{to{transform:rotate(360deg)}}
+  </style>
+</head>
+<body>
+  <main class="card">
+    <img src="./icon-192.png" alt="Op-Sym">
+    <h1>Opening Op-Sym Capture</h1>
+    <p>Your shared content is being handed to the Op-Sym Capture review screen.</p>
+    <div class="spin"></div>
+  </main>
+<script>
+const APP_URL="https://script.google.com/macros/s/AKfycbygTbX2omi_63Ricm2bDmbBzcwNuBXtKxJI2NpHIqvLCf051BiU06BTPkM-ufdbyQAXbA/exec";
+const p=new URLSearchParams(location.search);
+const title=String(p.get('title')||'').slice(0,400);
+const text=String(p.get('text')||'').slice(0,2500);
+const url=String(p.get('url')||'').slice(0,1200);
+
+const target=new URL(APP_URL);
+target.searchParams.set('ui','mobile');
+target.searchParams.set('opsymCapture','share');
+target.searchParams.set('opsymSource','Android Share');
+if(title)target.searchParams.set('shareTitle',title);
+if(text)target.searchParams.set('shareText',text);
+if(url)target.searchParams.set('shareUrl',url);
+
+setTimeout(()=>location.replace(target.toString()),180);
+</script>
+</body>
+</html>
